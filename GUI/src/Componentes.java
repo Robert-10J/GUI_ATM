@@ -119,7 +119,7 @@ public class Componentes extends JFrame {
 
         salirS = new JLabel();
         salirS.setFont(new Font("Arial", 0, 14));
-        salirS.setBounds(70, 500, 250, 20);
+        salirS.setBounds(150, 500, 250, 20);
         panel.add(salirS);
     }
 
@@ -137,6 +137,14 @@ public class Componentes extends JFrame {
         panel.add(nip);
     }
 
+    private void jDeposito()
+    {
+        depositar = new JTextField();
+        depositar.setBounds(235, 460, 50, 20);
+        depositar.setVisible(false);
+        panel.add(depositar);
+
+    }
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
@@ -230,16 +238,18 @@ public class Componentes extends JFrame {
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
-                        
-                        depositar = new JTextField();
-                        depositar.setBounds(235, 460, 50, 20);
-                        panel.add(depositar);
+                        jDeposito();
+                        depositar.setVisible(true);
                         break;
 
                     case "3":
-                        salirS.setText("Gracias por su preferencia");
-
+                        salirS.setText("¡Gracias por su preferencia!");
+                        salirP();
+                        salirB.setVisible(true);
                         break;
+                    
+                    default:
+                        JOptionPane.showMessageDialog(null, "Opcion no valida por favor vuelva a intentarlo");
                 }
             }
         }; acepOP.addActionListener(opM);
@@ -248,7 +258,20 @@ public class Componentes extends JFrame {
     private void salirP()
     {
         salirB = new JButton("Salir");
+        salirB.setBounds(200, 525, 75, 20);
+        salirB.setBackground(Color.LIGHT_GRAY);
+        salirB.setFont(new Font("Arial", 0, 12));
+        panel.add(salirB);
+        salirB.setVisible(false);
 
-
+        /*Este evento ayuda a que el boton salir cierre la ventana
+        y para de ejecutar el programa*/
+        ActionListener sal = new ActionListener(){
+        
+            @Override
+            public void actionPerformed(ActionEvent ext) {
+                System.exit(0);
+            }
+        }; salirB.addActionListener(sal);
     }
 }
