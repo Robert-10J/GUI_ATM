@@ -17,14 +17,18 @@ public class Componentes extends JFrame {
     public JTextField user;
     public JTextField nip;
     public JTextField opcion;
+    public JTextField depositar;
     private JButton acepOP;
+    private JButton salirB;
 
     private JLabel mp;
     private JLabel saldo;
     private JLabel deF;
     private JLabel salir;
     private JLabel ingOp;
-    private JLabel op;
+    private JLabel conSaldo;
+    private JLabel deposito;
+    private JLabel salirS;
 
     String barra = File.separator;
     String ubicacion = System.getProperty("user.dir") + barra + "Registro" + barra;
@@ -103,6 +107,20 @@ public class Componentes extends JFrame {
         ingOp.setBounds(50, 460, 200, 20);
         panel.add(ingOp);
         
+        conSaldo = new  JLabel();
+        conSaldo.setFont(new Font("Arial", 0, 14));
+        conSaldo.setBounds(50, 500, 150, 20);
+        panel.add(conSaldo);
+
+        deposito = new JLabel();
+        deposito.setFont(new Font("Arial", 0, 14));
+        deposito.setBounds(50, 500, 200, 20);
+        panel.add(deposito);
+
+        salirS = new JLabel();
+        salirS.setFont(new Font("Arial", 0, 14));
+        salirS.setBounds(70, 500, 250, 20);
+        panel.add(salirS);
     }
 
     private void jtUser()
@@ -133,9 +151,9 @@ public class Componentes extends JFrame {
             public void actionPerformed(final ActionEvent ap){
                 
                 mp.setText("Menu principal:");
-                saldo.setText("1.- Saldo:");
-                deF.setText("2.- Depositar fondos:");
-                salir.setText("3.- Salir:");
+                saldo.setText("1.- Saldo");
+                deF.setText("2.- Depositar fondos");
+                salir.setText("3.- Salir");
 
                 ingOp.setText("Ingrese la opcion que desea: ");
                 
@@ -198,5 +216,39 @@ public class Componentes extends JFrame {
         acepOP.setFont(new Font("Arial", Font.BOLD, 12));
         acepOP.setVisible(false);
         panel.add(acepOP);
+
+          ActionListener opM = new ActionListener(){
+        
+            @Override
+            public void actionPerformed(ActionEvent opt) {
+                
+                switch(opcion.getText()){
+                    
+                    case "1": 
+                        conSaldo.setText("Su saldo es: ");
+                        break;
+
+                    case "2":
+                        deposito.setText("Ingrese su saldo a depositar:");
+                        
+                        depositar = new JTextField();
+                        depositar.setBounds(235, 460, 50, 20);
+                        panel.add(depositar);
+                        break;
+
+                    case "3":
+                        salirS.setText("Gracias por su preferencia");
+
+                        break;
+                }
+            }
+        }; acepOP.addActionListener(opM);
+    }
+
+    private void salirP()
+    {
+        salirB = new JButton("Salir");
+
+
     }
 }
