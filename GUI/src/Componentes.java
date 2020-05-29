@@ -136,15 +136,7 @@ public class Componentes extends JFrame {
         nip.setBounds(200, 165, 100, 25);
         panel.add(nip);
     }
-
-    /*private void jDeposito()
-    {
-        can = new JTextField();
-        can.setBounds(235, 500, 50, 20);
-        can.setVisible(false);
-        panel.add(can);
-
-    }*/
+    
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
@@ -171,8 +163,8 @@ public class Componentes extends JFrame {
 
                 acepOP.setVisible(true);
             }
-        }; acep.addActionListener(acept);           
-    }
+        }; acep.addActionListener(acept);   
+    }    
 
     private void btnRegistro()
     {
