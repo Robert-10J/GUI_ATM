@@ -17,7 +17,7 @@ public class Componentes extends JFrame {
     public JTextField user;
     public JTextField nip;
     public JTextField opcion;
-    public JTextField depositar;
+    public JTextField can;
     private JButton acepOP;
     private JButton salirB;
 
@@ -137,14 +137,6 @@ public class Componentes extends JFrame {
         panel.add(nip);
     }
 
-    private void jDeposito()
-    {
-        depositar = new JTextField();
-        depositar.setBounds(235, 460, 50, 20);
-        depositar.setVisible(false);
-        panel.add(depositar);
-
-    }
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
@@ -171,8 +163,8 @@ public class Componentes extends JFrame {
 
                 acepOP.setVisible(true);
             }
-        }; acep.addActionListener(acept);           
-    }
+        }; acep.addActionListener(acept);   
+    }    
 
     private void btnRegistro()
     {
@@ -238,18 +230,24 @@ public class Componentes extends JFrame {
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
-                        jDeposito();
-                        depositar.setVisible(true);
+                        can = new JTextField();
+                        can.setBounds(235, 500, 50, 20);
+                        panel.add(can);
+                        conSaldo.setVisible(false);
                         break;
 
                     case "3":
                         salirS.setText("¡Gracias por su preferencia!");
                         salirP();
                         salirB.setVisible(true);
+                        deposito.setVisible(false);
                         break;
                     
                     default:
                         JOptionPane.showMessageDialog(null, "Opcion no valida por favor vuelva a intentarlo");
+                        conSaldo.setVisible(false);
+                        deposito.setVisible(false);
+                        salirS.setVisible(false);
                 }
             }
         }; acepOP.addActionListener(opM);
