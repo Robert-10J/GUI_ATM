@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Componentes extends JFrame {
@@ -20,6 +21,8 @@ public class Componentes extends JFrame {
     public JTextField can;
     private JButton acepOP;
     private JButton salirB;
+    private JButton acepDep;
+    private JScrollPane scrol;
 
     private JLabel mp;
     private JLabel saldo;
@@ -40,6 +43,8 @@ public class Componentes extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("ATM");
         this.setResizable(false);
+        scrol = new JScrollPane(panel);
+        add(scrol);
 
         iniciarComponentes();
     }
@@ -234,6 +239,10 @@ public class Componentes extends JFrame {
                         can.setBounds(235, 500, 50, 20);
                         panel.add(can);
                         conSaldo.setVisible(false);
+                        acepDeposito();
+                        acepDep.setVisible(true);
+                        salirS.setVisible(false);
+                        salirB.setVisible(false);
                         break;
 
                     case "3":
@@ -241,6 +250,8 @@ public class Componentes extends JFrame {
                         salirP();
                         salirB.setVisible(true);
                         deposito.setVisible(false);
+                        can.setVisible(false);
+                        acepDep.setVisible(false);
                         break;
                     
                     default:
@@ -271,5 +282,15 @@ public class Componentes extends JFrame {
                 System.exit(0);
             }
         }; salirB.addActionListener(sal);
+    }
+
+    private void acepDeposito()
+    {
+        acepDep = new JButton("Aceptar");
+        acepDep.setBounds(300, 500, 95, 25);
+        acepDep.setBackground(Color.LIGHT_GRAY);
+        acepDep.setFont(new Font("Arial", 1, 12));
+        acepDep.setVisible(false);
+        panel.add(acepDep);
     }
 }
