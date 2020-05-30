@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Componentes extends JFrame {
@@ -22,7 +21,6 @@ public class Componentes extends JFrame {
     private JButton acepOP;
     private JButton salirB;
     private JButton acepDep;
-    private JScrollPane scrol;
 
     private JLabel mp;
     private JLabel saldo;
@@ -43,8 +41,6 @@ public class Componentes extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("ATM");
         this.setResizable(false);
-        scrol = new JScrollPane(panel);
-        add(scrol);
 
         iniciarComponentes();
     }
@@ -231,6 +227,10 @@ public class Componentes extends JFrame {
                     
                     case "1": 
                         conSaldo.setText("Su saldo es: ");
+
+                        deposito.setText("");
+                        can.setVisible(false);
+                        acepDep.setVisible(false);
                         break;
 
                     case "2":
@@ -238,20 +238,19 @@ public class Componentes extends JFrame {
                         can = new JTextField();
                         can.setBounds(235, 500, 50, 20);
                         panel.add(can);
-                        conSaldo.setVisible(false);
                         acepDeposito();
                         acepDep.setVisible(true);
-                        salirS.setVisible(false);
-                        salirB.setVisible(false);
+                        conSaldo.setText("");
                         break;
 
                     case "3":
                         salirS.setText("¡Gracias por su preferencia!");
                         salirP();
                         salirB.setVisible(true);
-                        deposito.setVisible(false);
+                        deposito.setText("");
                         can.setVisible(false);
                         acepDep.setVisible(false);
+                        conSaldo.setText("");
                         break;
                     
                     default:
@@ -292,5 +291,5 @@ public class Componentes extends JFrame {
         acepDep.setFont(new Font("Arial", 1, 12));
         acepDep.setVisible(false);
         panel.add(acepDep);
-    }
+    } 
 }
