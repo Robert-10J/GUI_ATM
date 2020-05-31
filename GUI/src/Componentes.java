@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.io.File;
 import java.util.Formatter;
@@ -9,11 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Componentes extends JFrame {
 
     public JPanel panel;
+    public JScrollPane bar;
     public JTextField user;
     public JTextField nip;
     public JTextField opcion;
@@ -54,6 +57,7 @@ public class Componentes extends JFrame {
         jtNip();
         jtUser();
         opAcep();
+        scroll();
     }
 
     private void panel()
@@ -61,6 +65,15 @@ public class Componentes extends JFrame {
         panel = new JPanel();
         panel.setLayout(null);
         this.getContentPane().add(panel);
+    }
+
+    private void scroll()
+    {
+        bar = new JScrollPane();
+        bar.setBounds(5, 10, 300, 900);
+        bar.setViewportView(panel);
+        panel.setPreferredSize(new Dimension(550, 1000));
+        add(bar);
     }
 
     private void colocarEtiquetas()
