@@ -187,6 +187,7 @@ public class Componentes extends JFrame {
                     panel.add(opcion);
 
                     acepOP.setVisible(true);
+                    acep.setVisible(false);
             }  
             }
         }; acep.addActionListener(acept);   
