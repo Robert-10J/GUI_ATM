@@ -65,7 +65,7 @@ public class Componentes extends JFrame {
     {
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.CYAN);
+        panel.setBackground(Color.LIGHT_GRAY);
         this.getContentPane().add(panel);
     }
 
