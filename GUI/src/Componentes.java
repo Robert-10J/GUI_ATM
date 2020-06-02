@@ -64,6 +64,7 @@ public class Componentes extends JFrame {
     {
         panel = new JPanel();
         panel.setLayout(null);
+        panel.setBackground(Color.CYAN);
         this.getContentPane().add(panel);
     }
 
@@ -139,7 +140,7 @@ public class Componentes extends JFrame {
 
     private void jtUser()
     {
-        user = new JTextField();
+        user = new JTextField(10);
         user.setBounds(200, 120, 100, 25);
         panel.add(user);
     }
@@ -163,19 +164,30 @@ public class Componentes extends JFrame {
         
             @Override
             public void actionPerformed(final ActionEvent ap){
-                
-                mp.setText("Menu principal:");
-                saldo.setText("1.- Saldo");
-                deF.setText("2.- Depositar fondos");
-                salir.setText("3.- Salir");
+                 
+                String text = user.getText();
+                String textN = nip.getText();
+                textN = textN.replaceAll(" ", " ");
+                text = text.replaceAll(" ", "");
 
-                ingOp.setText("Ingrese la opcion que desea: ");
-                
-                opcion = new JTextField();
-                opcion.setBounds(235, 460, 50, 20);
-                panel.add(opcion);
+                if(text.length() == 0 && textN.length() == 0)
+                {
+                    JOptionPane.showMessageDialog(null, "No se han ingresado datos, intente de nuevo");;
+                }
+                 else { 
+                    mp.setText("Menu principal:");
+                    saldo.setText("1.- Saldo");
+                    deF.setText("2.- Depositar fondos");
+                    salir.setText("3.- Salir");
 
-                acepOP.setVisible(true);
+                    ingOp.setText("Ingrese la opcion que desea: ");
+                    
+                    opcion = new JTextField();
+                    opcion.setBounds(235, 460, 50, 20);
+                    panel.add(opcion);
+
+                    acepOP.setVisible(true);
+            }  
             }
         }; acep.addActionListener(acept);   
     }    
