@@ -68,7 +68,7 @@ public class Componentes extends JFrame {
     {
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.LIGHT_GRAY);
+        
         this.getContentPane().add(panel);
     }
 
@@ -158,10 +158,6 @@ public class Componentes extends JFrame {
         nip.setFont(new Font("Consolas", 1, 12));
         panel.add(nip);
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> Ver1.0
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
@@ -258,7 +254,7 @@ public class Componentes extends JFrame {
           ActionListener opM = new ActionListener(){
         
             @Override
-            public void actionPerformed(ActionEvent opt) {
+            public void actionPerformed(ActionEvent opt){
                 
                 switch(opcion.getText()){
                     
