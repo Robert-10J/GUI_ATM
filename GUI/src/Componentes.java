@@ -24,6 +24,7 @@ public class Componentes extends JFrame {
     private JButton acepOP;
     private JButton salirB;
     private JButton acepDep;
+    private JButton regis;
 
     private JLabel mp;
     private JLabel saldo;
@@ -119,22 +120,22 @@ public class Componentes extends JFrame {
 
         ingOp = new JLabel();
         ingOp.setFont(new Font("Arial", Font.PLAIN,14));
-        ingOp.setBounds(50, 460, 200, 20);
+        ingOp.setBounds(50, 490, 200, 20);
         panel.add(ingOp);
         
         conSaldo = new  JLabel();
         conSaldo.setFont(new Font("Arial", 0, 14));
-        conSaldo.setBounds(50, 500, 150, 20);
+        conSaldo.setBounds(50, 550, 150, 20);
         panel.add(conSaldo);
 
         deposito = new JLabel();
         deposito.setFont(new Font("Arial", 0, 14));
-        deposito.setBounds(50, 500, 200, 20);
+        deposito.setBounds(50, 550, 200, 20);
         panel.add(deposito);
 
         salirS = new JLabel();
         salirS.setFont(new Font("Arial", 0, 14));
-        salirS.setBounds(150, 500, 250, 20);
+        salirS.setBounds(150, 550, 250, 20);
         panel.add(salirS);
     }
 
@@ -172,7 +173,7 @@ public class Componentes extends JFrame {
 
                 if(text.length() == 0 && textN.length() == 0)
                 {
-                    JOptionPane.showMessageDialog(null, "No se han ingresado datos, intente de nuevo");;
+                    JOptionPane.showMessageDialog(null, "No hay datos, intente de nuevo");;
                 }
                  else { 
                     mp.setText("Menu principal:");
@@ -183,11 +184,12 @@ public class Componentes extends JFrame {
                     ingOp.setText("Ingrese la opcion que desea: ");
                     
                     opcion = new JTextField();
-                    opcion.setBounds(235, 460, 50, 20);
+                    opcion.setBounds(235, 490, 50, 20);
                     panel.add(opcion);
 
                     acepOP.setVisible(true);
                     acep.setVisible(false);
+                    regis.setVisible(false);
             }  
             }
         }; acep.addActionListener(acept);   
@@ -195,7 +197,7 @@ public class Componentes extends JFrame {
 
     private void btnRegistro()
     {
-        final JButton regis = new JButton("Registrar");
+        regis = new JButton("Registrar");
         regis.setBounds(250, 250, 90, 35);
         regis.setBackground(Color.lightGray);
         regis.setFont(new Font("Arial", Font.BOLD, 12));
@@ -238,7 +240,7 @@ public class Componentes extends JFrame {
     private void opAcep()
     {
         acepOP = new JButton("Aceptar");
-        acepOP.setBounds(300, 453, 90, 28);
+        acepOP.setBounds(300, 483, 90, 28);
         acepOP.setBackground(Color.LIGHT_GRAY);
         acepOP.setFont(new Font("Arial", Font.BOLD, 12));
         acepOP.setVisible(false);
@@ -262,7 +264,7 @@ public class Componentes extends JFrame {
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
                         can = new JTextField();
-                        can.setBounds(235, 500, 50, 20);
+                        can.setBounds(235, 550, 50, 20);
                         panel.add(can);
                         acepDeposito();
                         acepDep.setVisible(true);
@@ -312,7 +314,7 @@ public class Componentes extends JFrame {
     private void acepDeposito()
     {
         acepDep = new JButton("Aceptar");
-        acepDep.setBounds(300, 500, 95, 25);
+        acepDep.setBounds(300, 54, 95, 25);
         acepDep.setBackground(Color.LIGHT_GRAY);
         acepDep.setFont(new Font("Arial", 1, 12));
         acepDep.setVisible(false);
