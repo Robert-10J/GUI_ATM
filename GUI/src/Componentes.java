@@ -1,10 +1,13 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.io.File;
 import java.util.Formatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -79,23 +82,24 @@ public class Componentes extends JFrame {
     }
 
     private void colocarEtiquetas()
-    {
+    {   
+        ImageIcon img = new ImageIcon("Logo.jpg");
         final JLabel  etiqueta = new JLabel();
-        etiqueta.setText("¡Bienvenidos a ATM!");
         etiqueta.setFont(new Font("Arial", Font.BOLD, 20));
-        etiqueta.setBounds(130, 25, 200, 25);
+        etiqueta.setBounds(130, 25, 200, 80);
+        etiqueta.setIcon(new ImageIcon(img.getImage().getScaledInstance(200, 80, Image.SCALE_SMOOTH)));
         panel.add(etiqueta);
         
         final JLabel userEt = new JLabel();
         userEt.setText("Ingrese su usuario:");
         userEt.setFont(new Font("Arial", Font.BOLD, 14));
-        userEt.setBounds(50, 120, 175, 20);
+        userEt.setBounds(50, 180, 175, 20);
         panel.add(userEt);
         
         final JLabel nipEt = new JLabel();
         nipEt.setText("Ingrese su nip:");
         nipEt.setFont(new Font("Arial", Font.BOLD, 14));
-        nipEt.setBounds(50, 170, 175, 20);
+        nipEt.setBounds(50, 220, 175, 20);
         panel.add(nipEt);
                 
         mp = new JLabel();
@@ -135,28 +139,29 @@ public class Componentes extends JFrame {
 
         salirS = new JLabel();
         salirS.setFont(new Font("Arial", 0, 14));
-        salirS.setBounds(150, 550, 250, 20);
+        salirS.setBounds(150, 570, 250, 20);
         panel.add(salirS);
     }
 
     private void jtUser()
     {
         user = new JTextField(10);
-        user.setBounds(200, 120, 100, 25);
+        user.setBounds(200, 175, 100, 25);
+        user.setFont(new Font("Consolas", 1, 12));
         panel.add(user);
     }
 
     private void jtNip()
     {
         nip = new JTextField();
-        nip.setBounds(200, 165, 100, 25);
+        nip.setBounds(200, 215, 100, 25);
+        nip.setFont(new Font("Consolas", 1, 12));
         panel.add(nip);
     }
-
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
-        acep.setBounds(100, 250, 90, 35);
+        acep.setBounds(100, 280, 90, 30);
         acep.setBackground(Color.lightGray);
         acep.setFont(new Font("Arial", Font.BOLD, 12));
         panel.add(acep);
@@ -171,7 +176,7 @@ public class Componentes extends JFrame {
                 textN = textN.replaceAll(" ", " ");
                 text = text.replaceAll(" ", "");
 
-                if(text.length() == 0 && textN.length() == 0)
+                if(text.length() == 0 || textN.length() == 0)
                 {
                     JOptionPane.showMessageDialog(null, "No hay datos, intente de nuevo");;
                 }
@@ -198,7 +203,7 @@ public class Componentes extends JFrame {
     private void btnRegistro()
     {
         regis = new JButton("Registrar");
-        regis.setBounds(250, 250, 90, 35);
+        regis.setBounds(250, 280, 90, 30);
         regis.setBackground(Color.lightGray);
         regis.setFont(new Font("Arial", Font.BOLD, 12));
         panel.add(regis);
@@ -259,12 +264,15 @@ public class Componentes extends JFrame {
                         deposito.setText("");
                         can.setVisible(false);
                         acepDep.setVisible(false);
+                        salirS.setText("");
+                        salirB.setVisible(false);
                         break;
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
                         can = new JTextField();
                         can.setBounds(235, 550, 50, 20);
+                        can.setVisible(true);
                         panel.add(can);
                         acepDeposito();
                         acepDep.setVisible(true);
@@ -275,9 +283,6 @@ public class Componentes extends JFrame {
                         salirS.setText("¡Gracias por su preferencia!");
                         salirP();
                         salirB.setVisible(true);
-                        deposito.setText("");
-                        can.setVisible(false);
-                        acepDep.setVisible(false);
                         conSaldo.setText("");
                         break;
                     
@@ -294,7 +299,7 @@ public class Componentes extends JFrame {
     private void salirP()
     {
         salirB = new JButton("Salir");
-        salirB.setBounds(200, 525, 75, 20);
+        salirB.setBounds(200, 600, 75, 20);
         salirB.setBackground(Color.LIGHT_GRAY);
         salirB.setFont(new Font("Arial", 0, 12));
         panel.add(salirB);
@@ -314,7 +319,7 @@ public class Componentes extends JFrame {
     private void acepDeposito()
     {
         acepDep = new JButton("Aceptar");
-        acepDep.setBounds(300, 54, 95, 25);
+        acepDep.setBounds(300, 546, 95, 25);
         acepDep.setBackground(Color.LIGHT_GRAY);
         acepDep.setFont(new Font("Arial", 1, 12));
         acepDep.setVisible(false);
