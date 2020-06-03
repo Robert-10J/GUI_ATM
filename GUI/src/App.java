@@ -1,8 +1,11 @@
 public class App {
     public static void main(String[] args) throws Exception {
         
-        Componentes ob = new Componentes();
+        /*Componentes ob = new Componentes();
 
-        ob.setVisible(true);
+        ob.setVisible(true);*/
+
+        Login op = new Login();
+        op.setVisible(true);
     }
 }
