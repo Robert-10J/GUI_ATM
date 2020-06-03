@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 public class Login extends JFrame {
 
     String barra = File.separator;
-    String ubicacion = System.getProperty("user.dir") + barra + "Registro" + barra;
+    String ubicacion = System.getProperty("user.dir") + barra + "Registro";
 
     private JPanel panel;
     private JTextField user;
@@ -132,7 +132,7 @@ public class Login extends JFrame {
         regis.setFont(new Font("Arial", Font.BOLD, 12));
         panel.add(regis);
   
-        final ActionListener save = new ActionListener() {
+            final ActionListener save = new ActionListener() {
 
             @Override
             public void actionPerformed(final java.awt.event.ActionEvent ae) {
@@ -141,7 +141,7 @@ public class Login extends JFrame {
                 final File crearUbicaFile = new File(ubicacion);
                 final File crearArchivo = new File (ubicacion + archivo);
 
-                    if(user.getText().equals("")) {
+                    if(user.getText().equals("") || nip.getText().equals("")) {
                         JOptionPane.showMessageDialog(null, "No gay datos");
                     }
                      else {
