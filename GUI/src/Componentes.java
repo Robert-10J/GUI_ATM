@@ -28,6 +28,7 @@ public class Componentes extends JFrame {
     private JLabel conSaldo;
     private JLabel deposito;
     private JLabel salirS;
+    private JLabel depEx;
 
     public Componentes()
     {
@@ -117,6 +118,11 @@ public class Componentes extends JFrame {
         salirS.setFont(new Font("Arial", 0, 14));
         salirS.setBounds(150, 320, 250, 20);
         panel.add(salirS);
+
+        depEx = new JLabel();
+        depEx.setFont(new Font("Arial", 0, 14));
+        depEx.setBounds(50, 380, 250, 25);
+        panel.add(depEx);
     }
 
     private void op()
@@ -139,11 +145,10 @@ public class Componentes extends JFrame {
             @Override
             public void actionPerformed(ActionEvent opt) {
                 
-                switch(opcion.getText()){
+                switch(opcion.getText()) {
                     
                     case "1": 
                         conSaldo.setText("Su saldo es: ");
-
                         deposito.setText("");
                         can.setVisible(false);
                         acepDep.setVisible(false);
@@ -188,15 +193,15 @@ public class Componentes extends JFrame {
         panel.add(salirB);
         salirB.setVisible(false);
 
-       /* Este evento ayuda a que el boton salir cierre la ventana
-        y para de ejecutar el programa*/
-        ActionListener sal = new ActionListener(){
-        
-            @Override
-            public void actionPerformed(ActionEvent ext) {
-                System.exit(0);
-            }
-        }; salirB.addActionListener(sal);
+            /*Este evento ayuda a que el boton salir cierre la 
+            ventana y para que el programa deje de ejecutarse*/
+            ActionListener sal = new ActionListener(){
+            
+                @Override
+                public void actionPerformed(ActionEvent ext) {
+                    System.exit(0);
+                }
+            }; salirB.addActionListener(sal);
     }
 
     private void acepDeposito()
@@ -207,5 +212,23 @@ public class Componentes extends JFrame {
         acepDep.setFont(new Font("Arial", 1, 12));
         acepDep.setVisible(false);
         panel.add(acepDep);
+
+            ActionListener okDep = new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent ok) {
+                    
+                    String text = can.getText();
+                    text = text.replaceAll(" ", " ");
+
+                        if(text.length() == 0)
+                        {
+                            JOptionPane.showMessageDialog(null, "No se ah ingresado la cantidad");
+                        }
+                         else {
+                             depEx.setText("¡El deposito se a realizado con exito!");
+                         }
+				}
+            }; acepDep.addActionListener(okDep);
     } 
 }
