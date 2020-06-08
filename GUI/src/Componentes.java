@@ -4,12 +4,15 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Componentes extends JFrame {
 
@@ -129,7 +132,72 @@ public class Componentes extends JFrame {
     {
         opcion = new JTextField();
         opcion.setBounds(240, 260, 50, 20);
+        
+        opcion.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent eP) {
+                char carac = eP.getKeyChar();
+
+                if(((carac < '0') || (carac > '9')) && (carac !='\b' ))
+                {
+                    eP.consume();
+                }
+
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+            
+        });
         panel.add(opcion);
+    }
+
+    private void jtCant()
+    {
+        can = new JTextField(10);
+        can.setBounds(235, 320, 50, 20);
+        can.setVisible(false);
+
+        can.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent eC) {
+                
+                char carac = eC.getKeyChar();
+
+                if(((carac < '0') || (carac > '9')) && (carac !='\b' ))
+                {
+                    eC.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+            
+        });
+        panel.add(can);
+        
+       
     }
 
     private void opAcep()
@@ -158,10 +226,14 @@ public class Componentes extends JFrame {
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
-                        can = new JTextField();
+                        // JFormattedTextField textField1 = new JFormattedTextField (new Integer(3));
+                        //can = new JTextField();
+                        /*can = new JFormattedTextField(new Integer(5));
                         can.setBounds(235, 320, 50, 20);
                         can.setVisible(true);
-                        panel.add(can);
+                        panel.add(can);*/
+                        jtCant();
+                        can.setVisible(true);
                         acepDeposito();
                         acepDep.setVisible(true);
                         conSaldo.setText("");
@@ -195,7 +267,7 @@ public class Componentes extends JFrame {
 
             /*Este evento ayuda a que el boton salir cierre la 
             ventana y para que el programa deje de ejecutarse*/
-            ActionListener sal = new ActionListener(){
+            ActionListener sal = new ActionListener() {
             
                 @Override
                 public void actionPerformed(ActionEvent ext) {
@@ -213,6 +285,7 @@ public class Componentes extends JFrame {
         acepDep.setVisible(false);
         panel.add(acepDep);
 
+            /* En este evento se hace la validacion del deposito si se ingresa oh no un dato*/
             ActionListener okDep = new ActionListener() {
 
 				@Override
