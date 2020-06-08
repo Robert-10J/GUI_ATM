@@ -12,6 +12,8 @@ import java.io.File;
 import java.util.Formatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Login extends JFrame {
 
@@ -23,8 +25,7 @@ public class Login extends JFrame {
     private JTextField nip;
     private JButton regis;
 
-    public Login()
-    {
+    public Login() {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -34,8 +35,7 @@ public class Login extends JFrame {
         inicializarCom();
     }
 
-    private void inicializarCom()
-    {
+    private void inicializarCom() {
         establecerPanel();
         labels();
         jtUser();
@@ -44,18 +44,16 @@ public class Login extends JFrame {
         btnRegistro();
     }
 
-    private void establecerPanel()
-    {
+    private void establecerPanel() {
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.LIGHT_GRAY);
         this.getContentPane().add(panel);
     }
 
-    private void labels()
-    {
+    private void labels() {
         ImageIcon img = new ImageIcon("Logo.jpg");
-        JLabel  etiqueta = new JLabel();
+        JLabel etiqueta = new JLabel();
         etiqueta.setBounds(150, 25, 200, 80);
         etiqueta.setIcon(new ImageIcon(img.getImage().getScaledInstance(200, 80, Image.SCALE_SMOOTH)));
         panel.add(etiqueta);
@@ -65,7 +63,7 @@ public class Login extends JFrame {
         userEt.setFont(new Font("Arial", Font.BOLD, 14));
         userEt.setBounds(50, 180, 175, 20);
         panel.add(userEt);
-        
+
         JLabel nipEt = new JLabel();
         nipEt.setText("Ingrese su nip:");
         nipEt.setFont(new Font("Arial", Font.BOLD, 14));
@@ -73,9 +71,33 @@ public class Login extends JFrame {
         panel.add(nipEt);
     }
 
-    private void jtUser()
-    {
+    private void jtUser() {
         user = new JTextField(10);
+        user.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent ev) {
+                char caracter = ev.getKeyChar();
+
+                if(((caracter < '0') || (caracter > '9')) && (caracter !='\b' ))
+                {
+                    ev.consume();
+                }
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        }); 
         user.setBounds(200, 175, 100, 25);
         user.setFont(new Font("Consolas", 1, 12));
         panel.add(user);
@@ -83,12 +105,44 @@ public class Login extends JFrame {
 
     private void jtNip()
     {
-        nip = new JTextField();
+        nip = new JTextField(10);
+        nip.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent eNip) {
+                
+                char caracter = eNip.getKeyChar();
+
+                if(((caracter < '0') || (caracter > '9')) && (caracter !='\b' ))
+                {
+                    eNip.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+            
+        });
         nip.setBounds(200, 215, 100, 25);
         nip.setFont(new Font("Consolas", 1, 12));
         panel.add(nip);
-    }   
-   
+    }  
+
+    public void frame()
+    {
+        Componentes menu = new Componentes();
+        menu.setVisible(true);
+    }
+
     private void btnAcep()
     {
         final JButton acep = new JButton("Aceptar");
@@ -117,12 +171,6 @@ public class Login extends JFrame {
             }
         }; acep.addActionListener(acept);   
     } 
-
-    public void frame()
-    {
-        Componentes menu = new Componentes();
-        menu.setVisible(true);
-    }
 
     private void btnRegistro()
     {
