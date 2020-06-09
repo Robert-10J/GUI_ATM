@@ -137,6 +137,8 @@ public class Login extends JFrame {
         panel.add(nip);
     }  
 
+    /* En este metodo se manda a llamar el JFrame donde se encuetra el menu
+    y se usa este metodo en el siguiente en el evento aceptar */
     public void frame()
     {
         Componentes menu = new Componentes();
