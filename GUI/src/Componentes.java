@@ -167,9 +167,7 @@ public class Componentes extends JFrame {
         can = new JTextField(10);
         can.setBounds(235, 320, 50, 20);
         can.setVisible(false);
-        
-        /* Este evento ayuda  a solo aceptar numeros por teclado, si se ingresan 
-        caracteres ignora el tipado hasta que se ingresen numeros*/
+
         can.addKeyListener(new KeyListener() {
 
             @Override
@@ -194,6 +192,7 @@ public class Componentes extends JFrame {
                 // TODO Auto-generated method stub
 
             }
+            
         });
         panel.add(can);
     }
@@ -209,7 +208,7 @@ public class Componentes extends JFrame {
           ActionListener opM = new ActionListener(){
         
             @Override
-            public void actionPerformed(ActionEvent opt){
+            public void actionPerformed(ActionEvent opt) {
                 
                 switch(opcion.getText()) {
                     
@@ -224,6 +223,12 @@ public class Componentes extends JFrame {
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
+                        // JFormattedTextField textField1 = new JFormattedTextField (new Integer(3));
+                        //can = new JTextField();
+                        /*can = new JFormattedTextField(new Integer(5));
+                        can.setBounds(235, 320, 50, 20);
+                        can.setVisible(true);
+                        panel.add(can);*/
                         jtCant();
                         can.setVisible(true);
                         acepDeposito();
@@ -236,9 +241,6 @@ public class Componentes extends JFrame {
                         salirP();
                         salirB.setVisible(true);
                         conSaldo.setText("");
-                        deposito.setText("");
-                        can.setVisible(false);
-                        acepDep.setVisible(false);
                         break;
                     
                     default:
