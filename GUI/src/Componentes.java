@@ -196,8 +196,6 @@ public class Componentes extends JFrame {
             
         });
         panel.add(can);
-        
-       
     }
 
     private void opAcep()
