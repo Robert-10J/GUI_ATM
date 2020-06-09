@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -158,7 +157,6 @@ public class Componentes extends JFrame {
                 // TODO Auto-generated method stub
 
             }
-            
         });
         panel.add(opcion);
     }
@@ -224,12 +222,6 @@ public class Componentes extends JFrame {
 
                     case "2":
                         deposito.setText("Ingrese su saldo a depositar:");
-                        // JFormattedTextField textField1 = new JFormattedTextField (new Integer(3));
-                        //can = new JTextField();
-                        /*can = new JFormattedTextField(new Integer(5));
-                        can.setBounds(235, 320, 50, 20);
-                        can.setVisible(true);
-                        panel.add(can);*/
                         jtCant();
                         can.setVisible(true);
                         acepDeposito();
@@ -242,6 +234,9 @@ public class Componentes extends JFrame {
                         salirP();
                         salirB.setVisible(true);
                         conSaldo.setText("");
+                        deposito.setText("");
+                        can.setVisible(false);
+                        acepDep.setVisible(false);
                         break;
                     
                     default:
